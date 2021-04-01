@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -9,9 +10,10 @@ use Intervention\Image\Facades\Image;
 
 function CacheRemember($name, $seconds_add, $return_val)
 {
-    return Cache::remember($name, now()->addSeconds($seconds_add),function () use ($return_val){
-        return $return_val;
-    } );
+    return $return_val;
+//    return Cache::remember($name, now()->addSeconds($seconds_add), function () use ($return_val) {
+//        return $return_val;
+//    });
 }
 
 
@@ -32,13 +34,19 @@ class ProfilesController extends Controller
         return view('profile.edit', compact('user'));
     }
 
+    public function list()
+    {
+        $profiles = Profile::paginate(4);
+        return view('profile.list',compact('profiles'));
+    }
+
     public function update(User $user)
     {
         $this->authorize('update', $user->profile);
         $data = request()->validate([
             'title' => ['required'],
             'description' => ['required',],
-            'url' => 'url',
+            'url' => '',
             'image' => '',
         ]);
         if (\request('image')) {

@@ -2,32 +2,36 @@
 
 @section('content')
     <div class="container">
-        @foreach($posts as $post)
-            <div class="row">
-                <div class="col-6 offset-3">
-                    <a href="/profile/{{ $post->user->id }}">
-                        <img src="/{{ $post->image }}" class="w-100">
-                    </a>
+        @if($posts->count() > 0)
+            @foreach($posts as $post)
+                <div class="row">
+                    <div class="col-6 offset-3">
+                        <a href="/profile/{{ $post->user->id }}">
+                            <img src="/{{ $post->image }}" class="w-100">
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="row pt-2 pb-4">
-                <div class="col-6 offset-3">
-                    <div>
-                        <p>
+                <div class="row pt-2 pb-4">
+                    <div class="col-6 offset-3">
+                        <div>
+                            <p>
                     <span class="font-weight-bold">
                         <a href="/profile/{{ $post->user->id }}">
                             <span class="text-dark">{{ $post->user->username }}</span>
                         </a>
                     </span> {{ $post->caption }}
-                        </p>
+                            </p>
+                        </div>
                     </div>
                 </div>
+            @endforeach
+            <div class="row">
+                <div class="col-8 d-flex justify-content-center">
+                    {{ $posts->links() }}
+                </div>
             </div>
-        @endforeach
-        <div class="row">
-            <div class="col-8 d-flex justify-content-center">
-                {{ $posts->links() }}
-            </div>
-        </div>
+        @else
+            <h1>No Recent Post</h1>
+        @endif
     </div>
 @endsection

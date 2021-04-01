@@ -27,9 +27,10 @@
             <a class="navbar-brand" href="{{ url('/') }}">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div>
-                        <img src="/svg/logo.svg" style="height: 20px; border-right: 1px solid #333;"
+                        <img src="http://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c521.png"
+                             style="height: 30px; border-right: 1px solid #333;"
                              class="pr-3"></div>
-                    <div class="pl-3">freeCodeGram</div>
+                    <div style="font-size: 20px" class="pl-3">Insta Clone</div>
                 </a>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -67,12 +68,18 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                <a class="dropdown-item" href="/profile/{{auth()->user()->id}}">
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="/profile/list">
+                                    All Users
+                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>

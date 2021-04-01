@@ -23,6 +23,7 @@ Route::get('/p/create', [App\Http\Controllers\PostController::class, 'create']);
 Route::post('/p', [App\Http\Controllers\PostController::class, 'store']);
 Route::get('/p/{post}', [App\Http\Controllers\PostController::class, 'show']);
 
+Route::get('/profile/list', [App\Http\Controllers\ProfilesController::class, 'list']);
 Route::get('/profile/{user}/edit', [App\Http\Controllers\ProfilesController::class, 'edit']);
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index']);
 Route::patch('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'update']);

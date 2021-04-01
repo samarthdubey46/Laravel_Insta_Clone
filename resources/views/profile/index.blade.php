@@ -33,7 +33,7 @@
 
                 <div class="pt-4 font-weight-bold" style="font-size: 17px">{{$user->profile->title}}</div>
                 <div class="pt-1" style="font-size: 16px">{{$user->profile->description}}</div>
-                <a href="https://www.freecodecamp.org/"
+                <a href="{{$user->profile->url}}"
                    style="font-size: 17px;color: #1d68a7">{{$user->profile->url}}</a>
             </div>
 
